@@ -34,7 +34,7 @@ The aim of this project is to investigate how the taste of wines are related to 
 The final web app would allow user to input values of the most important physiochemical properties of wine (either white or red) and return the predicted wine quality.
 
 
-**Epics 1: Data Preparation** 
+**Epic 1: Data Preparation** 
 - Story #1: Downloading the data files (red wine & white wine) from UCI Machine Learning Repository (1 pt) **(Planned for the next 2 weeks)**
     - **Backlog**
     - Link to data source:[https://archive.ics.uci.edu/ml/datasets/wine+quality]
@@ -43,7 +43,7 @@ The final web app would allow user to input values of the most important physioc
     - Conducting exploratory data analysis (variable structures, distribution of variables, etc.)
     - Performing data cleaning (null values, outliers, etc.)
     
-**Epics 2: Modeling and Model Selection** 
+**Epic 2: Modeling and Model Selection** 
 - Story #1: Building classification models on randomly selected training data using Random Forest, XGBoost, and Neural Networks (4 pts) **(Planned for the next 2 weeks)**
     - **Backlog**
 - Story #2: Comparing modelings based on performance metrics (Accuracy) on testing data (2 pts) **(Planned for the next 2 weeks)**
@@ -53,7 +53,7 @@ The final web app would allow user to input values of the most important physioc
 - Story #4: Reviewing models with QA partner (4 pts)
     - **Backlog**
     
-**Epics 3: Online Deployment and Testing** 
+**Epic 3: Online Deployment and Testing** 
 - Story #1: Web app UI design (8 pts)
     - **Backlog**
 - Story #2: Deploying web app (Flask) on AWS (8 pts)
@@ -63,7 +63,7 @@ The final web app would allow user to input values of the most important physioc
 - Story #4: Testing (Unit tests and Configured reproducibility tests) (8 pts)
     - **Backlog**
     
-**Epics 4: Final Presentation**  
+**Epic 4: Final Presentation**  
 - Story #1: Presentation slides (4 pts)
     - **Backlog**
     
