@@ -37,7 +37,7 @@ The final web app would allow user to input values of the most important physioc
 **Epics 1: Data Preparation** 
 - Story #1: Downloading the data files (red wine & white wine) from UCI Machine Learning Repository (1 pt) **(Planned for the next 2 weeks)**
     - **Backlog**
-    - Link to data source: [https://archive.ics.uci.edu/ml/datasets/wine+quality]
+    - Link to data source:[https://archive.ics.uci.edu/ml/datasets/wine+quality]
 - Story #2: EDA and Data Cleaning (2 pts) **(Planned for the next 2 weeks)**
     - **Backlog**
     - Conducting exploratory data analysis (variable structures, distribution of variables, etc.)
