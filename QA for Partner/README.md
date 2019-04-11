@@ -1,7 +1,7 @@
 # Example project repository
 
 ```diff
-+ QA feedback is highlighted in green.
++ QA feedback from Yucheng Zhu is highlighted in green.
 ```
 
 
@@ -33,7 +33,14 @@
 * Business criteria: By predicting the popularity of a song, the web app could possibly help song writers to increase exposures of their songs and thus increase their incomes. The success of the app could be measured by the year of year increase in income of active users.
 
 ```diff
-+ this will be highlighted in green
+Is the vision clearly articulated?
++ Yes, the vision is clearly articulated.
+
+Is there an audience who will find it motivating?
++ Yes, both music lovers and producers will be interested in learning more about various factors that makes a song popular.
+
+Is there enough information for the business stakeholder to understand and agree with the motivation for the project so that they fund the project over someone else’s?
++ Yes, the vision provides enough information for the business stakeholder to understand and agree with the motivation. One suggestion is explain "secret recipe" more in detail (e.g. is it about specific lytics, genre, rhythm, etc.)
 
 ```
 
