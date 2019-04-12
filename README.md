@@ -19,9 +19,9 @@
 **Mission**: Enable users to predict quality of a wine based on physiochemical properties of the wine.
 
 **Success criteria**: 
-- (Machine Learning) The accuracy of the selected model on testing dataset should be at least 80%. 
+- (Machine Learning) The prediction accuracy ((TP+TN)/total) of the selected model on the test dataset should be at least 80%. 
 - (Business) User retention rate should be at least 60%.
-- (Business) Those users who have tasted the wine they try to predict via the web app will be asked whether they think the prediction is accurate. The project is considered successful if the satisfication rate is greater than 70%. 
+- (Business) Those users who have tasted the wine they try to predict via the web app will be asked whether they think the prediction is accurate. The project is considered successful if the satisfaction rate is greater than 70%. 
 
 ## Backlog 
 
@@ -46,7 +46,7 @@ The final web app would allow user to input values of the most important physioc
 **Epic 2: Modeling and Model Selection** 
 - Story #1: Building classification models on randomly selected training data using Random Forest, XGBoost, and Neural Networks (4 pts) **(Planned for the next 2 weeks)**
     - **Backlog**
-- Story #2: Comparing modelings based on performance metrics (Accuracy) on testing data (2 pts) **(Planned for the next 2 weeks)**
+- Story #2: Comparing models based on performance metrics (Accuracy) on testing data (2 pts) **(Planned for the next 2 weeks)**
     - **Backlog**
 - Story #3: Exploring additional models (e.g. CNN, SVM)
     -   **Icebox**
