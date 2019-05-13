@@ -8,7 +8,7 @@ import sys
 import logging
 
 
-from sqlalchemy import create_engine, Column, Integer, String, Text
+from sqlalchemy import create_engine, Column, Integer, String, Text, Float
 from sqlalchemy.ext.declarative import declarative_base
 import sqlalchemy as sql
 
@@ -34,20 +34,20 @@ class Wine_Predict(Base):
     __tablename__ = 'Wine_Predict'
 
     index  = Column(Integer, primary_key=True, unique=True, nullable=False)
-    fixed_acidity = Column(float, unique=False, nullable=False)
-    volatile_acidity = Column(float, unique=False, nullable=False)
-    citric_acid = Column(float, unique=False, nullable=False)
-    residual_sugar= Column(float, unique=False, nullable=False)
-    chlorides   = Column(float, unique=False, nullable=False)
-    free_sulfur = Column(float, unique=False, nullable=False)
-    dioxid = Column(float, unique=False, nullable=False)
-    total_sulfur = Column(float, unique=False, nullable=False)
-    dioxide    = Column(float, unique=False, nullable=False)
-    density = Column(float, unique=False, nullable=False)
-    pH  = Column(float, unique=False, nullable=False)
-    sulphates   = Column(float, unique=False, nullable=False)
-    alcohol = Column(float, unique=False, nullable=False)
-    quality = Column(int, unique=False, nullable=False)
+    fixed_acidity = Column(Float, unique=False, nullable=False)
+    volatile_acidity = Column(Float, unique=False, nullable=False)
+    citric_acid = Column(Float, unique=False, nullable=False)
+    residual_sugar= Column(Float, unique=False, nullable=False)
+    chlorides   = Column(Float, unique=False, nullable=False)
+    free_sulfur = Column(Float, unique=False, nullable=False)
+    dioxid = Column(Float, unique=False, nullable=False)
+    total_sulfur = Column(Float, unique=False, nullable=False)
+    dioxide    = Column(Float, unique=False, nullable=False)
+    density = Column(Float, unique=False, nullable=False)
+    pH  = Column(Float, unique=False, nullable=False)
+    sulphates   = Column(Float, unique=False, nullable=False)
+    alcohol = Column(Float, unique=False, nullable=False)
+    quality = Column(Integer, unique=False, nullable=False)
     prediction = Column(String(100), unique=False, nullable=True)
 
     def __repr__(self):
