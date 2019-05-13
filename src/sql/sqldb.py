@@ -6,21 +6,26 @@ Created on 5/10/19
 import os
 import sys
 import logging
-import logging.config
+
 
 from sqlalchemy import create_engine, Column, Integer, String, Text
-from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 import sqlalchemy as sql
 
-import config
-from helpers import create_connection, get_session
 import argparse
 
-logging.config.fileConfig(config.LOGGING_CONFIG)
-logger = logging.getLogger('wine-models')
+
+logging.basicConfig(level=logging.DEBUG, filename="logfile", filemode="a+",
+                        format="%(asctime)-15s %(levelname)-8s %(message)s")
+logger = logging.getLogger('wine-db')
+
+
 
 Base = declarative_base()
+
+
+
+
 
 
 class Wine_Predict(Base):

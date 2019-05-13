@@ -24,3 +24,6 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     upload_data(args)
+
+
+#e.g. python upload_data.py --input_file_path "../data/red.csv" --bucket_name "yzhu-project" --output_file_path "r2.csv"
