@@ -8,9 +8,11 @@ import sys
 import logging
 
 
-from sqlalchemy import create_engine, Column, Integer, String, Text, Float
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.ext.declarative import declarative_base 
+from sqlalchemy import Column, Integer, String, MetaData, create_engine, Text, Float
 import sqlalchemy as sql
+import pandas as pd
 
 import argparse
 
@@ -57,53 +59,25 @@ class Wine_Predict(Base):
 
 
 
-
-def get_engine_string(RDS = False):
-    if RDS:
-        conn_type = "mysql+pymysql"
-        user = os.environ.get("MYSQL_USER")
-        password = os.environ.get("MYSQL_PASSWORD")
-        host = os.environ.get("MYSQL_HOST")
-        port = os.environ.get("MYSQL_PORT")
-        DATABASE_NAME = 'mysql-yuchengzhu'
-        engine_string = "{}://{}:{}@{}:{}/{}". \
-            format(conn_type, user, password, host, port, DATABASE_NAME)
-        # print(engine_string)
-        logging.debug("engine string: %s"%engine_string)
-        return  engine_string
-    else:
-        return 'sqlite:///Wine_Predict.db'
+# the engine_string format
+#engine_string = "{conn_type}://{user}:{password}@{host}:{port}/DATABASE_NAME"
+conn_type = "mysql+pymysql"
+user = os.environ.get("MYSQL_USER")
+password = os.environ.get("MYSQL_PASSWORD")
+host = os.environ.get("MYSQL_HOST")
+port = os.environ.get("MYSQL_PORT")
+DATABASE_NAME = 'wine'
+engine_string = "{}://{}:{}@{}:{}/{}".\
+format(conn_type, user, password, host, port, DATABASE_NAME)
+#print(engine_string)
+engine = sql.create_engine(engine_string)
+Base.metadata.create_all(engine)
 
 
-
-
-
-
-def create_db(args,engine=None):
-    """Creates a database with the data models inherited from `Base` (Tweet and TweetScore).
-    Args:
-        engine (:py:class:`sqlalchemy.engine.Engine`, default None): SQLAlchemy connection engine.
-            If None, `engine_string` must be provided.
-        engine_string (`str`, default None): String defining SQLAlchemy connection URI in the form of
-            `dialect+driver://username:password@host:port/database`. If None, `engine` must be provided.
-    Returns:
-        None
-    """
-    if engine is None:
-        RDS = eval(args.RDS)
-        logger.info("RDS:%s"%RDS)
-        engine = sql.create_engine(get_engine_string(RDS = RDS))
-
-    Base.metadata.create_all(engine)
-    logging.info("database created")
+# set up looging config
+logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
+logger = logging.getLogger(__file__)
 
 
 
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Create defined tables in database")
-    parser.add_argument("--RDS", default="False",help="True if want to create in RDS else None")
-    args = parser.parse_args()
-    create_db(args)
-
-    
