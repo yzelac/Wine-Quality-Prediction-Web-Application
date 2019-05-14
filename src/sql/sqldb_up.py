@@ -10,7 +10,7 @@ import logging
 
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base 
-from sqlalchemy import Column, Integer, String, MetaData, create_engine, Text, Floa
+from sqlalchemy import Column, Integer, String, MetaData, create_engine, Text, Float
 import sqlalchemy as sql
 import pandas as pd
 
@@ -59,14 +59,25 @@ class Wine_Predict(Base):
 
 
 
-
-# set up sqlite connection
-engine_string = 'sqlite:////tmp/wine.db'
+# the engine_string format
+#engine_string = "{conn_type}://{user}:{password}@{host}:{port}/DATABASE_NAME"
+conn_type = "mysql+pymysql"
+user = os.environ.get("MYSQL_USER")
+password = os.environ.get("MYSQL_PASSWORD")
+host = os.environ.get("MYSQL_HOST")
+port = os.environ.get("MYSQL_PORT")
+DATABASE_NAME = 'msia423'
+engine_string = "{}://{}:{}@{}:{}/{}".\
+format(conn_type, user, password, host, port, DATABASE_NAME)
+#print(engine_string)
 engine = sql.create_engine(engine_string)
-# create the tracks table
 Base.metadata.create_all(engine)
+
+
 # set up looging config
 logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
 logger = logging.getLogger(__file__)
+
+
 
 
