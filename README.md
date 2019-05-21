@@ -147,7 +147,7 @@ python src/download_data.py
 
 Example usage:
 ```bash
-python src/upload_data.py --input_file_path "../data/red.csv" --bucket_name "xxx" --output_file_path "xx/red.csv"
+python src/upload_data.py --input_file_path "data/red.csv" --bucket_name "xxx" --output_file_path "xx/red.csv"
 
 ```
 ### 5. upload to table(s) to 'msia' database in RDS

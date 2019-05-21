@@ -14,4 +14,4 @@ def download_data(read_path,save_path):
 
 if __name__ == "__main__":
     url = 'http://s3.us-east-2.amazonaws.com/wine-source/winequality-red.csv'
-    download_data(url,'../data/red.csv')
+    download_data(url,'data/red.csv')

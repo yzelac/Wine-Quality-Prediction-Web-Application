@@ -26,4 +26,4 @@ if __name__ == "__main__":
     upload_data(args)
 
 
-#e.g. python upload_data.py --input_file_path "../data/red.csv" --bucket_name "yzhu-project" --output_file_path "r2.csv"
+#e.g. python upload_data.py --input_file_path "data/red.csv" --bucket_name "yzhu-project" --output_file_path "r2.csv"
