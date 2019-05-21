@@ -135,6 +135,14 @@ pip install -r requirements.txt
 
 ```
 
+
+#### Remember to do the following if useing EC2
+```bash
+source ~/.bashrc
+
+```
+
+
 ### 3. download data to the data/folder
 
 Usage:
