@@ -107,10 +107,10 @@ Reproduce the model development process with Make
 ## Documentation (To be added)
 ## Running the application (To be added)
 
-1. cd to directory MSiA423-Project/
+### 1. cd to directory MSiA423-Project/
 
 
-2. create virtual environment
+### 2. create virtual environment
 
 The `requirements.txt` file contains the packages required to run the model code. An environment can be set up in two ways. See bottom of README for exploratory data analysis environment setup. 
 
@@ -135,7 +135,7 @@ pip install -r requirements.txt
 
 ```
 
-3. download data to the data/folder
+### 3. download data to the data/folder
 
 Usage:
 ```bash
@@ -143,14 +143,14 @@ python src/download_data.py
 
 ```
 
-4. upload to to specific S3
+### 4. upload to to specific S3
 
 Example usage:
 ```bash
 python src/upload_data.py --input_file_path "../data/red.csv" --bucket_name "xxx" --output_file_path "xx/red.csv"
 
 ```
-5. upload to table(s) to 'msia' database in RDS
+### 5. upload to table(s) to 'msia' database in RDS
 
 Usage:
 ```bash
