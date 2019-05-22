@@ -1,4 +1,5 @@
 # MSiA 423 - Wine Quality Prediction Project (Yucheng Zhu)
+### For 'midproject' Review
 
 
 <!-- toc -->
@@ -71,12 +72,96 @@ The final web app would allow user to input values of the most important physioc
     
 
     
-## Repo structure (To be added) 
+## Repo structure
+
+```
+├── README.md                         <- You are here
+│
+├── data                              <- Folder that contains primary data set
+│
+├── src                               <- Source data for the project.
+│   ├── download_data.py              <- Script for downloading data from a public S3 bucket.
+│   │  
+│   ├── upload_data.py                <- Script for uploading data to a specific busket (can be private).  
+│   │   
+│   ├── sql
+│        │  
+│        ├── config.py                <- config file  
+│        │   
+│        ├── helpers.py               <- helper functions
+│        │ 
+│        ├── local.py                 <- Script for creating local .db  
+│        │   
+│        ├── sqldb.py                 <- Script for adding tables to 'msia' database in RDS.
+│
+│
+├── test                              <- Folder that hold test files for the model
+│
+├── train                             <- Folder that hold training files for the model
+│                               
+├── requirements.txt                  <- Python package dependencies.
+```
+
+Reproduce the model development process with Make
+
 ## Documentation (To be added)
 ## Running the application (To be added)
-## Testing (To be added)
+
+### 1. cd to directory MSiA423-Project/
 
 
+### 2. create virtual environment
+
+The `requirements.txt` file contains the packages required to run the model code. An environment can be set up in two ways. See bottom of README for exploratory data analysis environment setup. 
+
+#### With `virtualenv`
+
+```bash
+pip install virtualenv
+
+virtualenv wine
+
+source wine/bin/activate
+
+pip install -r requirements.txt
+
+```
+#### With `conda`
+
+```bash
+conda create -n wine python=3.7
+conda activate wine
+pip install -r requirements.txt
+
+```
 
 
+#### Remember to do the following if useing EC2
+```bash
+source ~/.bashrc
 
+```
+
+
+### 3. download data to the data/folder
+
+Usage:
+```bash
+python src/download_data.py
+
+```
+
+### 4. upload to to specific S3
+
+Example usage:
+```bash
+python src/upload_data.py --input_file_path "data/red.csv" --bucket_name "xxx" --output_file_path "xx/red.csv"
+
+```
+### 5. upload to table(s) to 'msia' database in RDS
+
+Usage:
+```bash
+python src/sql/sqldb.py
+
+```
