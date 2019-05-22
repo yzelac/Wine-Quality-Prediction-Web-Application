@@ -6,10 +6,19 @@ Created on 5/12/19
 
 import argparse
 import boto3
+import logging
+
+logger = logging.getLogger(__name__)
+
+
 s3 = boto3.client("s3")
 
 
 def upload_data(args):
+	"""upload data file to a specific S3 path
+	Args:
+		args (src): parsed argument input
+	"""
     s3.upload_file(args.input_file_path,args.bucket_name,args.output_file_path)
 
 
