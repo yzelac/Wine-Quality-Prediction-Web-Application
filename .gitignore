@@ -1,6 +1,6 @@
-
+# ignore all . files but include . folders
 .*
+!.*/
 !/.gitignore
-
-.idea
-__pycache__
+.idea/
+__pycache__/
