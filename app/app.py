@@ -2,15 +2,15 @@ import pickle
 import traceback
 import os
 import sys
-# import pandas as pd
+import pandas as pd
 from flask import render_template, request, redirect, url_for
-# import logging.config
-# from app import db, app
+import logging.config
 from flask import Flask
-# from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
+from app import app
 from src.score_model import *
 from src.load_data import *
 from src.train_model import *
@@ -26,12 +26,12 @@ app.config.from_object('config')
 
 # Define LOGGING_CONFIG in config.py - path to config file for setting
 # up the logger (e.g. config/logging/local.conf)
-# logging.config.fileConfig(app.config["LOGGING_CONFIG"])
-# logger = logging.getLogger("wine-pred")
-# logger.debug('Test log')
+logging.config.fileConfig(app.config["LOGGING_CONFIG"])
+logger = logging.getLogger("wine-pred")
+logger.debug('Test log')
 
 # Initialize the database
-# db = SQLAlchemy(app)
+db = SQLAlchemy(app)
 
 
 @app.route('/')
@@ -46,62 +46,6 @@ def index():
     except:
         logger.warning("Unable to display homepage")
         return render_template('error.html')
-
-
-# @app.route('/navigate', methods=['POST', 'GET'])
-# def navigate():
-#     """Main view that get customer information for evaluation.
-#     Create view into evaluation page that allows to input customer information
-#     and inserts it into the templates/index.html template.
-#
-#     Returns: rendered html template
-#     """
-#
-#     try:
-#         # redirect to choose threshold page
-#         return render_template('index.html')
-#     except:
-#         logger.warning("Not able to enter customer information, error page returned")
-#         return render_template('error.html')
-
-
-# @app.route('/list', methods=['POST', 'GET'])
-# def list():
-#     """Main view that get user's choice of threshold for classification.
-#     Create view into threshold deciding page that determines which customers to be listed in
-#     later steps and inserts it into the templates/choose_thre.html template.
-#
-#     Returns: rendered html template
-#     """
-#
-#     try:
-#         # redirect to choose threshold page
-#         return render_template('choose_thre.html')
-#     except:
-#         logger.warning("Not able to choose threshold, error page returned")
-#         return render_template('error.html')
-
-
-# @app.route('/choose_thre', methods=['POST', 'GET'])
-# def choose_thre():
-#     """Main view that lists customers most likely to churn in the database.
-#     Create view into customer list page that uses data queried from Churn_Prediction database and
-#     inserts it into the templates/customer_list.html template.
-#
-#     Returns: rendered html template and user's chosen threshold probability level.
-#     """
-#
-#     try:
-#         # get user's choice of threshold - returned type str
-#         threshold = request.form['threshold']
-#         # pull customers from database
-#         customers = db.session.query(Churn_Prediction).limit(app.config["MAX_ROWS_SHOW"]).all()
-#         logger.debug("customer list page accessed")
-#         return render_template('customer_list.html', customers=customers, threshold=float(threshold))
-#     except:
-#         traceback.print_exc()
-#         logger.warning("Not able to display customers, error page returned")
-#         return render_template('error.html')
 
 
 
@@ -171,11 +115,6 @@ def add_entry():
 
         pd.DataFrame(wine_df).to_csv('wine_df.csv')
 
-        # usr_input = wine_df.iloc[0].to_string()
-        # make a prediction
-        # sc = StandardScaler()
-        # wine_df = sc.fit_transform(wine_df)
-
         pred_quality = model.predict(wine_df)
         pred_quality_num = pred_quality[0]
 
@@ -187,21 +126,21 @@ def add_entry():
         elif pred_quality_num == 0:
             evaluation = "Poor wine to avoid!"
 
-        # wine1 = Wine_Predict (fixed_acidity=float(fixed_acidity),
-        #                       volatile_acidity=float(volatile_acidity),
-        #                       citric_acid=float(citric_acid),
-        #                       residual_sugar=float(residual_sugar),
-        #                       chlorides=float(chlorides),
-        #                       free_sulfur_dioxide=float(free_sulfur_dioxide),
-        #                       total_sulfur_dioxide=float(total_sulfur_dioxide),
-        #                       density=float(density),
-        #                       pH=float(pH),
-        #                       sulphates=float(sulphates),
-        #                       alcohol=float(alcohol),
-        #                       quality=float(pred_quality)
-        #                       )
-        # db.session.add(wine1)
-        # db.session.commit()
+        wine1 = Wine_Predict (fixed_acidity=float(fixed_acidity),
+                              volatile_acidity=float(volatile_acidity),
+                              citric_acid=float(citric_acid),
+                              residual_sugar=float(residual_sugar),
+                              chlorides=float(chlorides),
+                              free_sulfur_dioxide=float(free_sulfur_dioxide),
+                              total_sulfur_dioxide=float(total_sulfur_dioxide),
+                              density=float(density),
+                              pH=float(pH),
+                              sulphates=float(sulphates),
+                              alcohol=float(alcohol),
+                              quality=float(pred_quality)
+                              )
+        db.session.add(wine1)
+        db.session.commit()
 
         logger.info("New wine evaluated as: %s", evaluation)
 
