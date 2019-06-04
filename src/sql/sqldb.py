@@ -30,23 +30,22 @@ class Wine_Predict(Base):
 
     __tablename__ = 'Wine_Predict'
 
-    index  = Column(Integer, primary_key=True, unique=True, nullable=False)
-    fixed_acidity = Column(Float, unique=False, nullable=False)
-    volatile_acidity = Column(Float, unique=False, nullable=False)
-    citric_acid = Column(Float, unique=False, nullable=False)
-    residual_sugar= Column(Float, unique=False, nullable=False)
-    chlorides = Column(Float, unique=False, nullable=False)
-    free_sulfur_dioxide = Column(Float, unique=False, nullable=False)
-    total_sulfur_dioxide = Column(Float, unique=False, nullable=False)
-    density = Column(Float, unique=False, nullable=False)
-    pH = Column(Float, unique=False, nullable=False)
-    sulphates = Column(Float, unique=False, nullable=False)
-    alcohol = Column(Float, unique=False, nullable=False)
+    fixed_acidity = Column(Float, primary_key=True, unique=False, nullable=False)
+    volatile_acidity = Column(Float, primary_key=True, unique=False, nullable=False)
+    citric_acid = Column(Float, primary_key=True, unique=False, nullable=False)
+    residual_sugar= Column(Float, primary_key=True, unique=False, nullable=False)
+    chlorides = Column(Float, primary_key=True, unique=False, nullable=False)
+    free_sulfur_dioxide = Column(Float, primary_key=True, unique=False, nullable=False)
+    total_sulfur_dioxide = Column(Float, primary_key=True, unique=False, nullable=False)
+    density = Column(Float, primary_key=True, unique=False, nullable=False)
+    pH = Column(Float, primary_key=True, unique=False, nullable=False)
+    sulphates = Column(Float, primary_key=True, unique=False, nullable=False)
+    alcohol = Column(Float, primary_key=True,unique=False, nullable=False)
     # quality = Column(Integer, unique=False, nullable=False)
-    quality = Column(String(100), unique=False, nullable=True)
+    quality = Column(Integer, unique=False, nullable=True)
 
     def __repr__(self):
-        predict_repr = "<Wine_Predict(index='%d', quality='%s')>"
+        predict_repr = "<Wine_Predict(fixed_acidity='%f', quality='%d')>"
         return predict_repr % (self.index, self.quality)
 
 
