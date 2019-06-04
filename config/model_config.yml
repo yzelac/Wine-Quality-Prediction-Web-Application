@@ -1,0 +1,45 @@
+model:
+  name: wine-model
+  author: Yucheng Zhu
+  description:
+  tags:
+    - classifier
+  dependencies: requirements.txt
+
+upload_data:
+  input_file_path: data/red.csv
+  bucket_name: yzhu-project
+  output_file_path: r2.csv
+
+download_data:
+  download_data:
+    url: http://s3.us-east-2.amazonaws.com/wine-source/winequality-red.csv
+    save_path: data/red.csv
+
+load_data:
+  load_data:
+    path: data/red.csv
+
+generate_feature:
+  transform_y:
+    left: 2
+    mid: 6.5
+    right: 8
+
+train_model:
+  split_data:
+    test_size: 0.2
+    seed: 111
+  training:
+    estimators: 200
+    path_to_model: models/rf_model.pkl
+
+score_model:
+  score_model:
+    path_to_model: models/rf_model.pkl
+    path_to_predicted: data/y_predicted.csv
+
+evaluate_model:
+  evaluate_model:
+    path_to_model: models/rf_model.pkl
+    path_to_predicted: data/y_predicted.csv

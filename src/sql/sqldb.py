@@ -21,12 +21,7 @@ logging.basicConfig(level=logging.DEBUG, filename="logfile", filemode="a+",
                         format="%(asctime)-15s %(levelname)-8s %(message)s")
 logger = logging.getLogger('wine-db')
 
-
-
 Base = declarative_base()
-
-
-
 
 
 
@@ -40,21 +35,19 @@ class Wine_Predict(Base):
     volatile_acidity = Column(Float, unique=False, nullable=False)
     citric_acid = Column(Float, unique=False, nullable=False)
     residual_sugar= Column(Float, unique=False, nullable=False)
-    chlorides   = Column(Float, unique=False, nullable=False)
-    free_sulfur = Column(Float, unique=False, nullable=False)
-    dioxid = Column(Float, unique=False, nullable=False)
-    total_sulfur = Column(Float, unique=False, nullable=False)
-    dioxide    = Column(Float, unique=False, nullable=False)
+    chlorides = Column(Float, unique=False, nullable=False)
+    free_sulfur_dioxide = Column(Float, unique=False, nullable=False)
+    total_sulfur_dioxide = Column(Float, unique=False, nullable=False)
     density = Column(Float, unique=False, nullable=False)
-    pH  = Column(Float, unique=False, nullable=False)
-    sulphates   = Column(Float, unique=False, nullable=False)
+    pH = Column(Float, unique=False, nullable=False)
+    sulphates = Column(Float, unique=False, nullable=False)
     alcohol = Column(Float, unique=False, nullable=False)
-    quality = Column(Integer, unique=False, nullable=False)
-    prediction = Column(String(100), unique=False, nullable=True)
+    # quality = Column(Integer, unique=False, nullable=False)
+    quality = Column(String(100), unique=False, nullable=True)
 
     def __repr__(self):
-        predict_repr = "<Wine_Predict(index='%d', prediction='%s')>"
-        return predict_repr % (self.index, self.prediction)
+        predict_repr = "<Wine_Predict(index='%d', quality='%s')>"
+        return predict_repr % (self.index, self.quality)
 
 
 
