@@ -11,6 +11,7 @@ from flask_sqlalchemy import SQLAlchemy
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
 from src.score_model import *
+from src.add import *
 from src.load_data import *
 from src.train_model import *
 from src.generate_feature import *
@@ -153,6 +154,4 @@ def add_entry():
 
 
 if __name__ == "__main__":
-    app.run()
-
-    # app.run(debug=app.config["DEBUG"], port=app.config["PORT"], host=app.config["HOST"])
+    app.run(debug=app.config["DEBUG"], port=app.config["PORT"], host=app.config["HOST"])
