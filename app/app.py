@@ -10,7 +10,6 @@ from flask_sqlalchemy import SQLAlchemy
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
-from app import app
 from src.score_model import *
 from src.load_data import *
 from src.train_model import *
