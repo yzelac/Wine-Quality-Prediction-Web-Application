@@ -131,6 +131,7 @@ pip install -r requirements.txt
 ```bash
 conda create -n wine python=3.7
 conda activate wine
+conda install pip
 pip install -r requirements.txt
 
 ```
