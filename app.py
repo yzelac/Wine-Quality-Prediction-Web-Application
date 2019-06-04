@@ -16,12 +16,12 @@ from src.train_model import *
 from src.generate_feature import *
 from app import *
 
-
 # Initialize the Flask application
 app = Flask(__name__)
 
 # Configure flask app from config.py
 app.config.from_object('config')
+
 
 # Define LOGGING_CONFIG in config.py - path to config file for setting
 # up the logger (e.g. config/logging/local.conf)
