@@ -52,8 +52,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sql/sqldb.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
-              <caret line="30" column="24" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
+            <state relative-caret-position="274">
+              <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
               <folding>
                 <element signature="e#49#58#0" expanded="true" />
               </folding>
@@ -495,18 +495,17 @@
       <workItem from="1559341106496" duration="4790000" />
       <workItem from="1559348213633" duration="2386000" />
       <workItem from="1559492781954" duration="12643000" />
-      <workItem from="1559580567858" duration="12056000" />
+      <workItem from="1559580567858" duration="12650000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36015000" />
+    <option name="totallyTimeSpent" value="36609000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1680" y="23" width="1920" height="1057" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14696486" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14696486" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -527,7 +526,7 @@
       <window_info anchor="right" id="SciView" order="3" weight="0.32967034" />
       <window_info anchor="right" x="0" y="0" width="370" height="827" id="Documentation" order="4" sideWeight="0.5026178" side_tool="true" weight="0.2814408" />
       <window_info anchor="right" id="Database" order="5" sideWeight="0.49948186" weight="0.2875458" />
-      <window_info anchor="right" id="Terminal" order="6" sideWeight="0.49673203" visible="true" weight="0.28753993" />
+      <window_info active="true" anchor="right" id="Terminal" order="6" sideWeight="0.49673203" visible="true" weight="0.35835996" />
     </layout>
     <layout-to-restore>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14696486" />
@@ -740,8 +739,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sql/sqldb.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="30" column="24" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
+        <state relative-caret-position="274">
+          <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
           <folding>
             <element signature="e#49#58#0" expanded="true" />
           </folding>
