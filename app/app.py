@@ -113,8 +113,6 @@ def add_entry():
         # change datatype from object to float
         wine_df = wine_df.astype("float")
 
-        pd.DataFrame(wine_df).to_csv('wine_df.csv')
-
         pred_quality = model.predict(wine_df)
         pred_quality_num = pred_quality[0]
 
@@ -139,7 +137,7 @@ def add_entry():
                               alcohol=float(alcohol),
                               quality=float(pred_quality)
                               )
-        exists = Wine_Predict.query(fixed_acidity=float(fixed_acidity),
+        instance = db.session.query(Wine_Predict).filter_by(fixed_acidity=float(fixed_acidity),
                                     volatile_acidity=float(volatile_acidity),
                                     citric_acid=float(citric_acid),
                                     residual_sugar=float(residual_sugar),
@@ -149,10 +147,9 @@ def add_entry():
                                     density=float(density),
                                     pH=float(pH),
                                     sulphates=float(sulphates),
-                                    alcohol=float(alcohol),
-                                    quality=float(pred_quality)
-                                    )
-        if not exists:
+                                    alcohol=float(alcohol)
+                                    ).first()
+        if not instance:
             db.session.add(wine1)
             db.session.commit()
             logger.info("New wine evaluated as: %s", evaluation)
