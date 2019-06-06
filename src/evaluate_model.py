@@ -53,11 +53,13 @@ def evaluate_model(y_test, path_to_model, path_to_predicted):
 
     y_predicted = pd.read_csv(path_to_predicted, index_col= 0)
 
-    print(y_predicted.head())
+    # print(y_predicted.head())
     pred_rfc = y_predicted['y_pred'].values
 
     print(classification_report(y_test, pred_rfc))
     print(confusion_matrix(y_test, pred_rfc))
+
+    return pred_rfc
 
 
 def evaluating(arg):
