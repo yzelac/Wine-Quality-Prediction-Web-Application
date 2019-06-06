@@ -139,14 +139,27 @@ def add_entry():
                               alcohol=float(alcohol),
                               quality=float(pred_quality)
                               )
-        db.session.add(wine1)
-        db.session.commit()
-
-        logger.info("New wine evaluated as: %s", evaluation)
+        exists = Wine_Predict.query(fixed_acidity=float(fixed_acidity),
+                                    volatile_acidity=float(volatile_acidity),
+                                    citric_acid=float(citric_acid),
+                                    residual_sugar=float(residual_sugar),
+                                    chlorides=float(chlorides),
+                                    free_sulfur_dioxide=float(free_sulfur_dioxide),
+                                    total_sulfur_dioxide=float(total_sulfur_dioxide),
+                                    density=float(density),
+                                    pH=float(pH),
+                                    sulphates=float(sulphates),
+                                    alcohol=float(alcohol),
+                                    quality=float(pred_quality)
+                                    )
+        if not exists:
+            db.session.add(wine1)
+            db.session.commit()
+            logger.info("New wine evaluated as: %s", evaluation)
 
         result = "This wine is classified as a {}".format(evaluation)
         # return redirect(url_for('index'))
-        return render_template('return.html', result=result)
+        return render_template('homepage.html', result=result)
     except:
         traceback.print_exc()
         logger.warning("Not able to display evaluations, error page returned")
