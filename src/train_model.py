@@ -81,15 +81,16 @@ def random_forest (X_train, X_test, y_train, y_test, estimators, path_to_model):
         rfc.fit(X_train, y_train)
     print(rfc)
 
-    path = os.getcwd()
-    outdir = path + '/models/'
-    if not os.path.exists(outdir):
-        os.mkdir(outdir)
+    if path_to_model is not None:
+        path = os.getcwd()
+        outdir = path + '/models/'
+        if not os.path.exists(outdir):
+            os.mkdir(outdir)
 
-    # path_to_model = 'models/rf_model.pkl'
-    with open(path_to_model, "wb") as f:
-        pickle.dump(rfc, f)
-    logger.info("Trained model object saved to %s", path_to_model)
+        # path_to_model = 'models/rf_model.pkl'
+        with open(path_to_model, "wb") as f:
+            pickle.dump(rfc, f)
+        logger.info("Trained model object saved to %s", path_to_model)
 
     return rfc
 

@@ -59,13 +59,14 @@ def score_model (X_test, y_test, path_to_model , path_to_predicted):
     y_predicted = pd.DataFrame(pred_rfc)
     y_predicted.columns = ['y_pred']
 
-    # save predicted as csv
-    path = os.getcwd()
-    outdir = path + '/data/'
-    if not os.path.exists(outdir):
-        os.mkdir(outdir)
+    if path_to_predicted is not None:
+        # save predicted as csv
+        path = os.getcwd()
+        outdir = path + '/data/'
+        if not os.path.exists(outdir):
+            os.mkdir(outdir)
 
-    pd.DataFrame(y_predicted).to_csv(path_to_predicted)
+        pd.DataFrame(y_predicted).to_csv(path_to_predicted)
 
     return y_predicted
 
