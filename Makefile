@@ -1,5 +1,5 @@
 .PHONY: all
-all: data_downloading modeling clean
+all: data_downloading modeling testing clean
 
 # download data from a public S3 bucket
 data_downloading:
@@ -12,6 +12,10 @@ data_uploading:
 # run all modeling steps
 modeling:
 	python src/evaluate_model.py
+
+# run all unit tests
+testing:
+	python test/test.py
 
 # Clean up things
 clean:
