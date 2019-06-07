@@ -36,6 +36,11 @@ def load_data(path):
 
 
 def loading(arg):
+    """Run defined functions
+
+    :param arg: parsed argument input
+    :return:
+    """
     with open(args.config, "r") as f:
         config = yaml.load(f, Loader=yaml.FullLoader)
 
