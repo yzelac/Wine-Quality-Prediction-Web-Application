@@ -58,7 +58,6 @@ def get_engine_string(conn_type="mysql+pymysql", DATABASE_NAME='msia423'):
 
     Returns:
         engine_string (str): String defining SQLAlchemy connection URI.
-
     """
 
     user = os.environ.get("MYSQL_USER")
