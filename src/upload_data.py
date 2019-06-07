@@ -19,7 +19,7 @@ def upload_data(args):
     """upload data file to a specific S3 path
 
     :param args: parsed argument input
-    :return:
+    :return: None
     """
 
     s3.upload_file(args.input_file_path,args.bucket_name,args.output_file_path)
