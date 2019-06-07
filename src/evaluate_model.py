@@ -36,12 +36,12 @@ s3 = boto3.client("s3")
 
 
 def evaluate_model(y_test, path_to_model, path_to_predicted):
-    """
+    """Evaluate model performance
 
-    :param y_test:
-    :param path_to_model:
-    :param path_to_predicted:
-    :return:
+    :param y_test: pd.dataframe, y label of the test data
+    :param path_to_model: path to the model pkl file
+    :param path_to_predicted: path to the predicted file
+    :return: Array of predicted outcome
     """
 
     with open(path_to_model, "rb") as f:
@@ -63,6 +63,11 @@ def evaluate_model(y_test, path_to_model, path_to_predicted):
 
 
 def evaluating(arg):
+    """Run defined functions
+
+    :param arg: parsed argument input
+    :return: None
+    """
     with open(args.config, "r") as f:
         config = yaml.load(f, Loader=yaml.FullLoader)
 
