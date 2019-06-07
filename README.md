@@ -1,4 +1,4 @@
-##Developer: Yucheng Zhu
+## Developer: Yucheng Zhu
 QA: Yi Feng
 
 
@@ -154,7 +154,7 @@ The final web app would allow user to input values of the most important physioc
 
 
 ## Documentation
-- See 'docs/README.md' for mid-project info.
+- See `ocs/README.md`s for mid-project info.
 
 ## Running the application (To be added)
 
