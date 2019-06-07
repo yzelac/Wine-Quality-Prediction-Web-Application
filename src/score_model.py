@@ -35,12 +35,12 @@ s3 = boto3.client("s3")
 
 
 def score_model (X_test, y_test, path_to_model , path_to_predicted):
-    """
+    """Score testing data using generated model
 
-    :param y_train:
-    :param y_test:
-    :param path_to_saved:
-    :return:
+    :param X_test (:py:class:`pandas.DataFrame`): testing dataframe with features
+    :param y_test (:py:class:`pandas.DataFrame`): testing dataframe with target
+    :param path_to_saved: path to save the predicted results
+    :return (:py:class:`pandas.DataFrame`): predicted result
     """
     with open(path_to_model, "rb") as f:
         model = pickle.load(f)
@@ -73,6 +73,11 @@ def score_model (X_test, y_test, path_to_model , path_to_predicted):
 
 
 def scoring(arg):
+    """Run defined functions
+
+    :param arg: parsed argument input
+    :return: None
+    """
     with open(args.config, "r") as f:
         config = yaml.load(f, Loader=yaml.FullLoader)
 
