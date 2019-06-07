@@ -31,14 +31,14 @@ logger = logging.getLogger(__name__)
 
 
 def transform_y(red, left, mid, right):
-    """Load data to a dataframe
-    Args:
-        path (str): file name.
-        
-    Returns:
-        df (:py:class:`pandas.DataFrame`): Concacted DataFrame
+    """Transform the y label
+
+    :param red (:py:class:`pandas.DataFrame`): Input Dataframe
+    :param left: left cutoff
+    :param mid:  mid cutoff
+    :param right:  right cutoff
+    :return: df (:py:class:`pandas.DataFrame`): DataFrame with Transformed y label
     """
-    
     bins = (left, mid, right)
     red['quality'] = pd.cut(red['quality'], bins = bins, labels = ['bad', 'good'])
     label_quality = LabelEncoder()
@@ -48,17 +48,31 @@ def transform_y(red, left, mid, right):
 
 
 def choose_features(df):
+    """choose selected features from dataframe
+
+    :param df (:py:class:`pandas.DataFrame`): Input DataFrame
+    :return: DataFrame with selected features
+    """
     X = df.drop('quality', axis=1)
     return X
 
 
 def get_target(df):
+    """Choose y label from dataframe
 
+    :param df (:py:class:`pandas.DataFrame`): Input DataFrame
+    :return: DataFrame with target column
+    """
     y = df['quality']
     return y
 
 
 def generating(arg):
+    """Run defined functions
+
+    :param arg: parsed argument input
+    :return: None
+    """
     with open(args.config, "r") as f:
         config = yaml.load(f, Loader=yaml.FullLoader)
 
