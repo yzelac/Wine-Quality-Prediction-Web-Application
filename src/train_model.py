@@ -34,12 +34,13 @@ s3 = boto3.client("s3")
 
 
 def split_data(X, y, test_size, seed):
-    """
-    :param X:
-    :param y:
-    :param test_size:
-    :param seed:
-    :return:
+    """Split data for training and testing purposes
+
+    :param X: Input dataframe with features
+    :param y: Input dataframe with target
+    :param test_size: proportion of test data
+    :param seed: seed for random state
+    :return: dataframes X_train, X_test, y_train, y_test
     """
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = test_size , random_state =seed)
 
@@ -63,14 +64,14 @@ def split_data(X, y, test_size, seed):
 
 
 def random_forest (X_train, X_test, y_train, y_test, estimators, path_to_model):
-    """
+    """Training the random foresr model
 
-    :param X_train:
-    :param X_test:
-    :param y_train:
-    :param y_test:
+    :param X_train (:py:class:`pandas.DataFrame`): Training df with features
+    :param X_test (:py:class:`pandas.DataFrame`): Testing df with features
+    :param y_train (:py:class:`pandas.DataFrame`): Training df with target
+    :param y_test (:py:class:`pandas.DataFrame`): Testing df with target
     :param estimators:
-    :return:
+    :return: random forest model
     """
     # sc = StandardScaler()
     # X_train = sc.fit_transform(X_train)
@@ -96,6 +97,11 @@ def random_forest (X_train, X_test, y_train, y_test, estimators, path_to_model):
 
 
 def training(arg):
+    """Run defined functions
+
+    :param arg: parsed argument input
+    :return: None
+    """
     with open(args.config, "r") as f:
         config = yaml.load(f, Loader=yaml.FullLoader)
 
