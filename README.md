@@ -1,14 +1,18 @@
-# MSiA 423 - Wine Quality Prediction Project (Yucheng Zhu)
-### For 'midproject' Review
+##Developer: Yucheng Zhu
+QA: Yi Feng
+
+
+# MSiA 423 - Wine Quality Prediction Project
 
 
 <!-- toc -->
 - [Project Charter](#project-charter)
 - [Backlog](#backlog)
-- [Repo structure (To be added)](#repo-structure)
-- [Documentation (To be added)](#documentation)
-- [Running the application (To be added)](#running-the-application)
-- [Testing (To be added)](#testing)
+- [Repo structure](#repo-structure)
+- [Documentation](#documentation)
+- [Running the application](#running-the-application)
+- [Testing](#testing)
+- [Works Cited](#cited)
 
 
 <!-- tocstop -->
@@ -67,9 +71,6 @@ The final web app would allow user to input values of the most important physioc
 **Epic 4: Final Presentation**  
 - Story #1: Presentation slides (4 pts)
     - **Backlog**
-    
-    
-    
 
     
 ## Repo structure
@@ -77,13 +78,68 @@ The final web app would allow user to input values of the most important physioc
 ```
 ├── README.md                         <- You are here
 │
+├── requirements.txt                  <- Python package dependencies.
+│
+├── Makefile                          <- Make file for reproduction
+│
+├── config.py                         <- Flask and Database config file
+│
+├── .gitignore                        <- Specifies intentionally untracked files to ignore
+│
+├── app
+│   ├── app.py                        <- Script for deploy the Flask app (main script)
+│   │  
+│   ├── static                        <- Folder contains images for the web pages
+│   │  
+│   ├── templates                     <- Folder contains html files
+│
+├── config
+│   ├── model_config.yml              <- YAML configuration
+│   │  
+│   ├── logging                       <- Folder holding logging configuratins
+│   
 ├── data                              <- Folder that contains primary data set
+│   ├── red.csv                       <- Primary dataset downloaded from S3
+│   │
+│   ├── y_predicted.csv               <- Prediction result
+│   │
+│   ├── train                         <- Folder holding training data
+│   │    ├── X_train.csv              <- training data
+│   │    │   
+│   │    ├── y_train.csv              <- training label
+│   │
+│   ├── test                          <- Folder holding testing data
+│        ├── X_test.csv               <- testing data  
+│        │   
+│        ├── y_test.csv               <- testing label  
+│  
+├── deliverables                      <- Folder that contains deliverables
+│
+├── docs                              <- Folder that contains documents
+│
+├── models                            <- Folder that contains trained model
+│
+├── notebooks                         <- Folder that contains notebooks
 │
 ├── src                               <- Source data for the project.
-│   ├── download_data.py              <- Script for downloading data from a public S3 bucket.
+│   ├── add.py                        <- Script for adding entry to db. 
 │   │  
-│   ├── upload_data.py                <- Script for uploading data to a specific busket (can be private).  
-│   │   
+│   ├── download_data.py              <- Script for downloading data from a public S3 bucket.
+│   │ 
+|   ├── upload_data.py                <- Script for uploading data to a specific busket (can be private).  
+│   │
+│   ├── load_data.py                  <- Script for loading data.   
+│   │ 
+│   ├── generate_feature.py           <- Script for generating features.  
+│   │ 
+│   ├── train_model.py                <- Script for model training. 
+│   │ 
+│   ├── score_model.py                <- Script for scoring data using trained model.     
+│   │ 
+│   ├── evaluate_model.py             <- Script for model performance evaluation. 
+│   │    
+│   ├── helper                        <- Folder holding script for helper functions
+│   │    
 │   ├── sql
 │        │  
 │        ├── config.py                <- config file  
@@ -94,25 +150,30 @@ The final web app would allow user to input values of the most important physioc
 │        │   
 │        ├── sqldb.py                 <- Script for adding tables to 'msia' database in RDS.
 │
-│
-├── test                              <- Folder that hold test files for the model
-│
-├── train                             <- Folder that hold training files for the model
-│                               
-├── requirements.txt                  <- Python package dependencies.
 ```
 
-Reproduce the model development process with Make
 
-## Documentation (To be added)
+## Documentation
+- See 'docs/README.md' for mid-project info.
+
 ## Running the application (To be added)
 
-### 1. cd to directory MSiA423-Project/
+### 1. Change directory to MSiA423-Project/
 
 
-### 2. create virtual environment
+### 2. Create virtual environment
 
-The `requirements.txt` file contains the packages required to run the model code. An environment can be set up in two ways. See bottom of README for exploratory data analysis environment setup. 
+The `requirements.txt` file contains the packages required to run the model code. An environment can be set up in two ways.
+
+#### With `conda` (Recommended)
+
+```bash
+conda create -n wine python=3.7
+conda activate wine
+conda install pip
+pip install -r requirements.txt
+
+```
 
 #### With `virtualenv`
 
@@ -126,43 +187,67 @@ source wine/bin/activate
 pip install -r requirements.txt
 
 ```
-#### With `conda`
 
-```bash
-conda create -n wine python=3.7
-conda activate wine
-conda install pip
-pip install -r requirements.txt
-
-```
-
-
-#### Remember to do the following if useing EC2
+#### If using EC2, please run:
 ```bash
 source ~/.bashrc
-
 ```
 
 
-### 3. download data to the data/folder
+### 3. Reproduce model using pipeline (optional)
 
-Usage:
+- Reproduce with default setting (setting can be configured manually in `config/model_config.yml`):
 ```bash
-python src/download_data.py
-
+make all
 ```
 
-### 4. upload to to specific S3
-
-Example usage:
+- To upload dataset to your personal S3, please change the following line in `Makefile` accordingly
 ```bash
-python src/upload_data.py --input_file_path "data/red.csv" --bucket_name "xxx" --output_file_path "xx/red.csv"
-
+data_uploading:
+	python src/upload_data.py --input_file_path "data/red.csv" --bucket_name "yzhu-project" --output_file_path "red3.csv"
 ```
-### 5. upload to table(s) to 'msia' database in RDS
-
-Usage:
+- And run
 ```bash
-python src/sql/sqldb.py
-
+make data_uploading
 ```
+
+### 4. Configure Flask app
+
+`config.py` holds the configurations for the Flask app:
+
+```python
+DEBUG = True  # Keep True for debugging, change to False when moving to production 
+LOGGING_CONFIG = "config/logging/local.conf"  # Path to file that configures Python logger
+PORT = 3000
+APP_NAME = "wine-predictor"
+HOST = "0.0.0.0"
+MAX_ROWS_SHOW = 30
+PATH_TO_MODEL = "models/rf_model.pkl"
+```
+
+### 5.Run the Flask app
+- To set up environment variable SQLALCHEMY_DATABASE_URI for RDS (URL for database that contains bank customers) from command line in the main project repository, please run:
+```bash
+export SQLALCHEMY_DATABASE_URI="{conn_type}://{user}:{password}@{host}:{port}/{DATABASE_NAME}"
+```
+- then
+```bash
+python app/app.py
+```
+
+### 5 Interact with the application
+
+Navigate to http://3.13.243.252:3000/ to interact with the current version of the app.
+
+
+
+## Testing
+
+- Run `make test` from the root directory to run all unit tests
+- Test file is located at `test/test.py` 
+
+
+## Works Cited
+
+- Images from 'Sour Grapes' and Sothebys.com
+- Template from W3Schools: https://www.w3schools.com/w3css/tryw3css_templates_parallax.htm
