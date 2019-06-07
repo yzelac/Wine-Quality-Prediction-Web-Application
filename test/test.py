@@ -10,7 +10,6 @@ import pickle
 import pytest
 
 
-
 import matplotlib.pyplot as plt
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import roc_auc_score
@@ -31,10 +30,7 @@ from src.helpers import Timer
 logger = logging.getLogger(__name__)
 
 def test_load_data():
-    """
-
-    :return:
-    """
+    """test load_data function"""
     print("test_load_data")
 
     path = "data/red.csv"
@@ -43,10 +39,8 @@ def test_load_data():
     assert df.equals(load_data(path))
 
 def test_transform_y():
-    """
+    """test transform_y function"""
 
-    :return:
-    """
     print("test_transform_y")
 
     # load sample test data
@@ -62,6 +56,8 @@ def test_transform_y():
     assert data.equals(transform_y(red=data, left=2, mid=6.5, right=8))
 
 def test_choose_features():
+    """test choose_features function"""
+
     print("test_choose_features")
 
     path = "data/red.csv"
@@ -77,6 +73,7 @@ def test_choose_features():
 
 
 def test_get_target():
+    """test get_target function"""
     print("test_get_target")
 
     path = "data/red.csv"
@@ -92,6 +89,7 @@ def test_get_target():
     assert y.equals(get_target(data))
 
 def test_split_data():
+    """test split_data function"""
 
     print("test_split_data")
 
@@ -110,7 +108,6 @@ def test_split_data():
 
     X_train1, X_test1, y_train1, y_test1 = split_data(X, y, test_size = 0.2 , seed =111)
 
-
     assert X_train.equals(X_train1)
     assert X_test.equals(X_test1)
     assert y_train.equals(y_train1)
@@ -118,6 +115,7 @@ def test_split_data():
 
 
 def test_random_forest_type ():
+    """test random_forest function by checking model type"""
 
     print("test_random_forest_type")
 
@@ -139,6 +137,7 @@ def test_random_forest_type ():
 
 
 def test_score_model():
+    """test score_model function"""
 
     print("test_score_model")
 
@@ -166,6 +165,7 @@ def test_score_model():
                                           path_to_predicted=None))
 
 def test_evaluate_model():
+    """test evaluate_model function"""
 
     print("test_evaluate_model")
     path = "data/red.csv"
@@ -186,7 +186,6 @@ def test_evaluate_model():
     y_predicted = pd.DataFrame(pred_rfc)
     y_predicted.columns = ['y_pred']
     pred_rfc = y_predicted['y_pred'].values
-
 
     assert (pred_rfc == evaluate_model(y_test, path_to_model="models/rf_model.pkl", path_to_predicted="data/y_predicted.csv")).all()
 
