@@ -237,7 +237,7 @@ python app/app.py
 
 ### 5 Interact with the application
 
-Navigate to http://3.13.243.252:3000/ to interact with the current version of the app.
+Navigate to http://3.13.243.252:3000/ (Or the combination of your EC2's public/elastic IP + port) to interact with the current version of the app.
 
 
 
