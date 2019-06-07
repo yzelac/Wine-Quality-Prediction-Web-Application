@@ -12,9 +12,10 @@ logger = logging.getLogger(__name__)
 
 def download_data(url,save_path):
     """Download data from a public S3 to certain path
+
     :param read_path: path to data source
     :param save_path: save path
-    :return:
+    :return: None
     """
 
     df = pd.read_csv(url, sep=';')
@@ -22,10 +23,10 @@ def download_data(url,save_path):
 
 
 def downloading (arg):
-    """
+    """Run functions defined
 
-    :param arg:
-    :return:
+    :param arg: parsed argument input
+    :return: None
     """
     with open(args.config, "r") as f:
         config = yaml.load(f, Loader=yaml.FullLoader)
