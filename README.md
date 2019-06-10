@@ -233,18 +233,20 @@ PATH_TO_MODEL = "models/rf_model.pkl"
 ### 5.Run the Flask app
 - To set up environment variable SQLALCHEMY_DATABASE_URI from command line in the main project repository, please run:
 ```bash
-local: export SQLALCHEMY_DATABASE_URI='sqlite:///data/wine_prediction.db'
+local: export SQLALCHEMY_DATABASE_URI='sqlite:///data/Wine_Predict.db'
 rds: export SQLALCHEMY_DATABASE_URI="{conn_type}://{user}:{password}@{host}:{port}/{DATABASE_NAME}"
 ```
 - then
 ```bash
-python app/app.py
+python app.py
 ```
 
 ### 5 Interact with the application
 
-Navigate to http://3.13.243.252:3000/ (Or the combination of your EC2's public/elastic IP + port) to interact with the current version of the app.
 
+Navigate to http://127.0.0.1:3000/ (If using RDS: the combination of your EC2's public/elastic IP + port) to interact with the current version of the app.
+
+The app is also available at: http://3.13.243.252:3000/ 
 
 
 ## Testing
