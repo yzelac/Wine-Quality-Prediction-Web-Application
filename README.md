@@ -205,7 +205,7 @@ make all
 ```bash
 python src/add.py
 
-# "--local_URI", default='sqlite:///data/Wine_Predict.db')
+# "--local_URI", default='sqlite:///data/Wine_Predict.db'
 
 ```
 
