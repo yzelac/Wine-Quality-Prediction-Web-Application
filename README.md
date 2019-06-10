@@ -204,14 +204,17 @@ make all
 - To create a database in the local location, run:
 ```bash
 python src/add.py
+
+# "--local_URI", default='sqlite:///data/Wine_Predict.db')
+
 ```
 
-- To upload dataset to your personal S3, please change the following line in `Makefile` accordingly
+- (Optional) To upload dataset to your personal S3, please change the following line in `Makefile` accordingly
 ```bash
 data_uploading:
 	python src/upload_data.py --input_file_path "data/red.csv" --bucket_name "yzhu-project" --output_file_path "red3.csv"
 ```
-- And run
+- (Optional) And run
 ```bash
 make data_uploading
 ```
@@ -233,7 +236,9 @@ PATH_TO_MODEL = "models/rf_model.pkl"
 ### 5.Run the Flask app
 - To set up environment variable SQLALCHEMY_DATABASE_URI from command line in the main project repository, please run:
 ```bash
+# If using default argument when running src/add.py, run:
 local: export SQLALCHEMY_DATABASE_URI='sqlite:///data/Wine_Predict.db'
+
 rds: export SQLALCHEMY_DATABASE_URI="{conn_type}://{user}:{password}@{host}:{port}/{DATABASE_NAME}"
 ```
 - then
