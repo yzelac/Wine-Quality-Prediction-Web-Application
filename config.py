@@ -5,7 +5,7 @@ LOGGING_CONFIG = "config/logging/local.conf"
 PORT = 3000
 APP_NAME = "wine-predictor"
 
-# local: export SQLALCHEMY_DATABASE_URI='sqlite:///data/wine_prediction.db'
+# local: export SQLALCHEMY_DATABASE_URI='sqlite:///data/Wine_Predict.db'
 # rds: export SQLALCHEMY_DATABASE_URI="{conn_type}://{user}:{password}@{host}:{port}/{DATABASE_NAME}"
 
 SQLALCHEMY_DATABASE_URI = os.environ.get("SQLALCHEMY_DATABASE_URI")
