@@ -206,6 +206,7 @@ make all
 python src/add.py
 
 # "--local_URI", default='sqlite:///data/Wine_Predict.db'
+# If want to save it into non-existing sub-directories, please make sure to create the folders first
 
 ```
 
