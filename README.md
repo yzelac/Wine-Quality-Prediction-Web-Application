@@ -201,6 +201,11 @@ source ~/.bashrc
 make all
 ```
 
+- To create a database in the local location, run:
+```bash
+python src/add.py
+```
+
 - To upload dataset to your personal S3, please change the following line in `Makefile` accordingly
 ```bash
 data_uploading:
@@ -220,15 +225,16 @@ DEBUG = True  # Keep True for debugging, change to False when moving to producti
 LOGGING_CONFIG = "config/logging/local.conf"  # Path to file that configures Python logger
 PORT = 3000
 APP_NAME = "wine-predictor"
-HOST = "0.0.0.0"
+HOST = "127.0.0.1"
 MAX_ROWS_SHOW = 30
 PATH_TO_MODEL = "models/rf_model.pkl"
 ```
 
 ### 5.Run the Flask app
-- To set up environment variable SQLALCHEMY_DATABASE_URI for RDS (URL for database that contains bank customers) from command line in the main project repository, please run:
+- To set up environment variable SQLALCHEMY_DATABASE_URI from command line in the main project repository, please run:
 ```bash
-export SQLALCHEMY_DATABASE_URI="{conn_type}://{user}:{password}@{host}:{port}/{DATABASE_NAME}"
+local: export SQLALCHEMY_DATABASE_URI='sqlite:///data/wine_prediction.db'
+rds: export SQLALCHEMY_DATABASE_URI="{conn_type}://{user}:{password}@{host}:{port}/{DATABASE_NAME}"
 ```
 - then
 ```bash
