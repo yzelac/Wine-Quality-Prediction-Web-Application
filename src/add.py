@@ -100,7 +100,7 @@ def create_db(args, engine=None):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Create defined tables in database")
     parser.add_argument("--RDS", default=False, action="store_true", help="True if want to create in RDS else None")
-    parser.add_argument("--local_URI", default='sqlite:///data/wine_prediction.db')
+    parser.add_argument("--local_URI", default='sqlite:///data/Wine_Predict.db')
     args = parser.parse_args()
 
     engine = create_db(args)
