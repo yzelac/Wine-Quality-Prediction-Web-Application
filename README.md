@@ -257,7 +257,7 @@ The app is also available at: http://3.13.243.252:3000/
 
 ## Testing
 
-- Run `make test` from the root directory to run all unit tests
+- Run `make testing` from the root directory to run all unit tests
 - Test file is located at `test/test.py` 
 
 
