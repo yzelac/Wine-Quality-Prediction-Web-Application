@@ -252,7 +252,6 @@ python app.py
 
 Navigate to http://127.0.0.1:3000/ (If using RDS: the combination of your EC2's public/elastic IP + port) to interact with the current version of the app.
 
-The app is also available at: http://3.13.243.252:3000/ 
 
 
 ## Testing
